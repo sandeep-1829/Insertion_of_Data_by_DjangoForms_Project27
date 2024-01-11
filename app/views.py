@@ -15,7 +15,14 @@ def create_school(request):
             sn=SFDO.cleaned_data['Sname']
             sp=SFDO.cleaned_data['Sprincipal']
             sl=SFDO.cleaned_data['Slocation']
-            SO=School.objects.get_or_create(Sname=sn,Sprincipal=sp,Slocation=sl)[0]
+            e=SFDO.cleaned_data['Email']
+            re=SFDO.cleaned_data['ReenterEmail']
+
+
+            # e=SFDO.cleaned_data['email']
+            # re=SFDO.cleaned_data['reenteremail']
+
+            SO=School.objects.get_or_create(Sname=sn,Sprincipal=sp,Slocation=sl,Email=e,ReenterEmail=re)[0]
             SO.save()
             return HttpResponse('School is created..')
         else:
